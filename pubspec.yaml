@@ -37,6 +37,9 @@ dependencies:
   animations: ^2.0.1
   badges: ^2.0.2
   page_transition: ^2.0.9
+  avatar_view: ^1.0.1
+  readmore: ^2.2.0
+  expandable_text: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -84,6 +87,9 @@ flutter:
     - family: OpenSans
       fonts:
         - asset: assets/fonts/OpenSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/OpenSans-Bold.ttf
+          weight: 700
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

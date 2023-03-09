@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youth_app/widgets/drawer.dart';
+import 'package:flutter/cupertino.dart';
+import '../widgets/floating_item.dart';
 
 class ContactUsScreen extends StatefulWidget {
   static const routename = '/contact-us';
@@ -16,6 +18,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingAction(),
       drawer: DrawerItem(),
       appBar: AppBar(
         centerTitle: true,
@@ -32,7 +35,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Text(
-                    'You can send us feedback, suggestions or queries and we’ll revert back by email soon.',
+                    'You can send us feedback, suggestions or queries and we’\ll revert back by email soon.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black54,

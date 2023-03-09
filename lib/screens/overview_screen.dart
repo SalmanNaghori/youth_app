@@ -7,6 +7,7 @@ import 'package:badges/badges.dart';
 import 'package:youth_app/widgets/agency_item.dart';
 import 'package:youth_app/widgets/articles_item.dart';
 import 'package:youth_app/widgets/drawer.dart';
+import '../widgets/floating_item.dart';
 
 class OverviewScreen extends StatelessWidget {
   static const routeName = '/OverviewScreen';
@@ -32,7 +33,7 @@ class OverviewScreen extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                   fontSize: 18,
                 ),
               ),
@@ -73,6 +74,7 @@ class OverviewScreen extends StatelessWidget {
             'Home',
             style: TextStyle(
               fontFamily: 'OpenSans',
+              fontWeight: FontWeight.w700,
             ),
           ),
           actions: [
@@ -127,19 +129,7 @@ class OverviewScreen extends StatelessWidget {
             ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.amber,
-          onPressed: () {},
-          child: Icon(
-            CupertinoIcons.chat_bubble_2_fill,
-            size: 37,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(8.0),
-            ),
-          ),
-        ),
+        floatingActionButton: FloatingAction(),
         drawer: DrawerItem(),
       ),
     );

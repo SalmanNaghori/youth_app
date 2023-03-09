@@ -1,10 +1,12 @@
 // this screen show only the content which are only writtren
 
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:youth_app/providers/FAQ_provider.dart';
 import 'package:youth_app/widgets/drawer.dart';
+import '../widgets/floating_item.dart';
 
 //this for About YWI
 
@@ -13,6 +15,7 @@ class AboutYWIScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingAction(),
       drawer: DrawerItem(),
       appBar: AppBar(
         centerTitle: true,
@@ -68,16 +71,17 @@ class _FAQsScreenState extends State<FAQsScreen> {
       expandedValue:
           'Lorem ipsum is a dummy text. This will be replaced with the actual text. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.',
     ),
-    // Item(
+    // Item_FAQ(
     //   headerValue: 'Item 3',
     //   expandedValue: 'Details of item 3',
     // ),
   ];
-  int _selectedIndex = -1;
+  // int _selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingAction(),
       drawer: DrawerItem(),
       appBar: AppBar(
         centerTitle: true,
@@ -89,36 +93,44 @@ class _FAQsScreenState extends State<FAQsScreen> {
           child: Card(
             child: ExpansionPanelList(
               expansionCallback: (int index, bool isExpanded) {
-                setState(() {
-                  _selectedIndex = isExpanded ? -1 : index;
-                });
+                setState(
+                  () {
+                    _items[index].isExpanded = !isExpanded;
+                    // _selectedIndex = isExpanded ? -1 : index;
+                  },
+                );
               },
-              children: _items.map((Item_FAQ item) {
-                return ExpansionPanel(
-                  headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(
-                      title: Text(
-                        item.headerValue,
-                        textAlign: TextAlign.start,
+              children: _items.map(
+                (Item_FAQ item) {
+                  return ExpansionPanel(
+                    headerBuilder: (BuildContext context, bool isExpanded) {
+                      return ListTile(
+                        minVerticalPadding: 20,
+                        title: Text(
+                          item.headerValue,
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      );
+                    },
+                    body: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Text(
+                        item.expandedValue,
+                        textAlign: TextAlign.justify,
                         style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                          color: Colors.black54,
                         ),
                       ),
-                    );
-                  },
-                  body: Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      item.expandedValue,
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(color: Colors.black54),
                     ),
-                  ),
-                  isExpanded: _selectedIndex == _items.indexOf(item),
-                );
-              }).toList(),
+                    isExpanded: item.isExpanded,
+                  );
+                },
+              ).toList(),
             ),
           ),
         ),
@@ -134,6 +146,7 @@ class TermOfUseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingAction(),
       drawer: DrawerItem(),
       appBar: AppBar(
         centerTitle: true,
