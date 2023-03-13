@@ -1,59 +1,190 @@
 import 'package:flutter/material.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:chewie/chewie.dart';
+import 'package:provider/provider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
+import 'package:video_player/video_player.dart';
 import 'package:youth_app/providers/pro_agency.dart';
 
-// show the list item to overview screen in agency page
+import '../screens/agancy_detail_screen.dart';
 
-class AgencyItem extends StatelessWidget {
+class AgencyItem extends StatefulWidget {
+  final String id;
+  final String title;
+  final String image;
+  final String image2;
+  final String url;
+
+  const AgencyItem({
+    required this.id,
+    required this.title,
+    required this.image,
+    required this.image2,
+    required this.url,
+  });
+
+  @override
+  State<AgencyItem> createState() => _AgencyItemState();
+}
+
+class _AgencyItemState extends State<AgencyItem> {
+  final PageController controller = PageController(initialPage: 0);
+  int currentPage = 0;
+  // final List<Agency> list;
+  late VideoPlayerController _videoPlayerController;
+  bool _isPlaying = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadVideo();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _videoPlayerController.dispose();
+  }
+
+  void _loadVideo() {
+    final url = Provider.of<Agency>(context, listen: false).url;
+    _videoPlayerController = VideoPlayerController.network(url)
+      ..initialize().then(
+        (_) {
+          setState(() {});
+        },
+      );
+  }
+
+  void _playPauseVideo() {
+    setState(() {
+      _isPlaying = !_isPlaying;
+      if (_isPlaying) {
+        _videoPlayerController.play();
+      } else {
+        _videoPlayerController.pause();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      scrollDirection: Axis.vertical,
-      itemCount: Dummy_agency.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isSmallScreen = screenSize.width < 600;
+    final agencyitem = Provider.of<Agency>(context);
+
+    return InkWell(
+      child: Container(
+        // margin: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                  child: Card(
-                    elevation: 6.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10.0),
+            GestureDetector(
+              onTap: () {
+                // Navigator.push(
+                //   context, MaterialPageRoute(builder: (context) => AgencyDetailScreen(agencyitem))
+                // );
+                Navigator.of(context).pushNamed(AgencyDetailScreen.routeName,
+                    arguments: agencyitem.id);
+                // Navigator.push(
+                //     context,
+                //     PageTransition(
+                //         child: AgencyDetailScreen(),
+                //         type: PageTransitionType.fade));
+              },
+              child: Container(
+                height: 175,
+                width: double.infinity,
+                // margin: EdgeInsets.all(10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(7),
+                  child: Stack(
+                    children: [
+                      PageView(
+                        controller: controller,
+                        onPageChanged: (int page) {
+                          setState(() {
+                            currentPage = page;
+                          });
+                        },
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(agencyitem.image),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: _playPauseVideo,
+                            child: AspectRatio(
+                              aspectRatio:
+                                  _videoPlayerController.value.aspectRatio,
+                              child: Stack(
+                                children: [
+                                  VideoPlayer(_videoPlayerController),
+                                  if (!_isPlaying)
+                                    Center(
+                                      child: isSmallScreen
+                                          ? Image.asset(
+                                              'assets/images/VideoPlaybtn.png')
+                                          : Image.asset(
+                                              'assets/images/VideoPlaybtn@3x.png'),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(agencyitem.image2),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    child: Image.network(
-                      Dummy_agency[index].imageUrl,
-                      fit: BoxFit.cover,
-                      height: 170.0,
-                      width: double.infinity,
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    margin: EdgeInsets.all(8.0),
+                      Positioned(
+                        bottom: 10.0,
+                        right: 10.0,
+                        child: DotsIndicator(
+                          dotsCount: 3,
+                          position: currentPage.toDouble(),
+                          decorator: DotsDecorator(
+                            color: Colors.grey.shade400,
+                            activeColor: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
+              ),
+
+              // ClipRRect(
+              //   borderRadius: BorderRadius.all(
+              //     Radius.circular(7),
+              //   ),
+              //   child: Image.network(
+              //     image,
+              //     height: 170,
+              //     width: double.infinity,
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 18, right: 15, bottom: 10),
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+              margin: EdgeInsets.all(15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width * 0.75,
                     child: Text(
-                      Dummy_agency[index].title,
+                      widget.title,
+                      style: TextStyle(fontSize: 18, color: Colors.black),
                       textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ),
                   CircleAvatar(
@@ -71,8 +202,8 @@ class AgencyItem extends StatelessWidget {
               ),
             ),
           ],
-        );
-      },
+        ),
+      ),
     );
   }
 }

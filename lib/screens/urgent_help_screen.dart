@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:youth_app/widgets/drawer.dart';
 import '../widgets/urgent_help_item.dart';
 import '../widgets/floating_item.dart';
+import '../widgets/drawer_item.dart';
 
 class UrgentHelpScreen extends StatelessWidget {
   const UrgentHelpScreen({super.key});
@@ -12,6 +13,7 @@ class UrgentHelpScreen extends StatelessWidget {
     return Scaffold(
       drawer: DrawerItem(),
       appBar: AppBar(
+        leading: DrawerIcon(),
         centerTitle: true,
         title: Text('Urgent help'),
       ),

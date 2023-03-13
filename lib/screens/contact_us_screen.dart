@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:youth_app/widgets/drawer.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'package:youth_app/widgets/drawer.dart';
+
 import '../widgets/floating_item.dart';
+import '../widgets/drawer_item.dart';
 
 class ContactUsScreen extends StatefulWidget {
   static const routename = '/contact-us';
@@ -21,8 +25,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
       floatingActionButton: FloatingAction(),
       drawer: DrawerItem(),
       appBar: AppBar(
+        leading: DrawerIcon(),
         centerTitle: true,
-        title: Text('Contact Us'),
+        title: Text("Contact us"),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -46,7 +51,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    border: OutlineInputBorder(),
+                    hintText: 'Enter Your Email',
                   ),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -62,7 +67,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 TextFormField(
                   decoration: InputDecoration(
                     labelText: 'Message',
-                    border: OutlineInputBorder(),
+                    hintText: 'Type your message',
                   ),
                   maxLines: 5,
                   validator: (value) {
