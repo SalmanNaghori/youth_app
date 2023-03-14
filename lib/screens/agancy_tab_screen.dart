@@ -25,7 +25,7 @@ class _AgencyTabState extends State<AgencyTab> {
 
     //simulate loading
     await Future.delayed(
-      Duration(seconds: 3),
+      Duration(seconds: 2),
     );
 
     setState(() {

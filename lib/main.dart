@@ -3,7 +3,8 @@ import 'package:youth_app/screens/agancy_detail_screen.dart';
 import 'package:youth_app/screens/overview_screen.dart';
 import 'package:youth_app/screens/urgent_help_screen.dart';
 import './providers/pro_agency.dart';
-import './screens/drawers_screen.dart';
+import 'screens/about_YWI_screen.dart';
+import './screens/FAQs_Screen.dart';
 
 import 'package:provider/provider.dart';
 

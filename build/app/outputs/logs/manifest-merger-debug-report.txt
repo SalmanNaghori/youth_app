@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:4:4-34:19
+INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:20:4-50:19
 MERGED from [:url_launcher_android] O:\Company work\Project\New folder\youth_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-14:19
 MERGED from [:url_launcher_android] O:\Company work\Project\New folder\youth_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-14:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Jarvis\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
@@ -14,11 +14,11 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Ja
 	android:name
 		INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
-INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
-INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
-INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
-MERGED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-51:12
+INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-51:12
+INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-51:12
+INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-51:12
+MERGED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-51:12
 MERGED from [:sqflite] O:\Company work\Project\New folder\youth_app\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:url_launcher_android] O:\Company work\Project\New folder\youth_app\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-16:12
 MERGED from [:path_provider_android] O:\Company work\Project\New folder\youth_app\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -59,11 +59,11 @@ INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\debug
 		INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\debug\AndroidManifest.xml
 	android:versionName
 		INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml
-		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
+		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-51:12
 		INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\debug\AndroidManifest.xml
 	android:versionCode
 		INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml
-		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-35:12
+		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:1-51:12
 		INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\debug\AndroidManifest.xml
 	xmlns:android
 		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:1:11-69
@@ -73,6 +73,34 @@ MERGED from O:\Company work\Project\New folder\youth_app\android\app\src\main\An
 MERGED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:3:5-66
 	android:name
 		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:3:22-64
+uses-permission#android.permission.QUERY_ALL_PACKAGES
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:4:5-76
+	android:name
+		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:4:22-74
+queries
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:6:1-19:11
+intent#action:name:android.intent.action.VIEW+data:scheme:https
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:7:5-10:14
+action#android.intent.action.VIEW
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:8:9-61
+	android:name
+		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:8:17-58
+data
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:9:9-40
+	android:scheme
+		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:9:15-37
+intent#action:name:android.intent.action.DIAL+data:scheme:tel
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:11:5-14:14
+action#android.intent.action.DIAL
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:12:9-61
+	android:name
+		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:12:17-58
+intent#action:name:android.intent.action.SEND+data:mimeType:*/*
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:15:5-18:14
+action#android.intent.action.SEND
+ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:16:9-61
+	android:name
+		ADDED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml:16:17-58
 uses-sdk
 INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from O:\Company work\Project\New folder\youth_app\android\app\src\main\AndroidManifest.xml

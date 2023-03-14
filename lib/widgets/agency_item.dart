@@ -92,6 +92,7 @@ class _AgencyItemState extends State<AgencyItem> {
                 //         type: PageTransitionType.fade));
               },
               child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 8),
                 height: 175,
                 width: double.infinity,
                 // margin: EdgeInsets.all(10),
@@ -183,7 +184,10 @@ class _AgencyItemState extends State<AgencyItem> {
                     width: MediaQuery.of(context).size.width * 0.75,
                     child: Text(
                       widget.title,
-                      style: TextStyle(fontSize: 18, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
                       textAlign: TextAlign.left,
                     ),
                   ),

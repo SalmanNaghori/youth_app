@@ -63,8 +63,6 @@ class OverviewScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool _isLoading = false;
-
     const int tabsCount = 2;
     final Size screenSize = MediaQuery.of(context).size;
     final bool isSmallScreen = screenSize.width < 600;
@@ -80,7 +78,7 @@ class OverviewScreen extends StatelessWidget {
           title: Text(
             'Home',
             style: TextStyle(
-              fontFamily: 'OpenSans',
+              fontFamily: 'OpenSansSemiBold',
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -103,6 +101,12 @@ class OverviewScreen extends StatelessWidget {
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(55),
             child: TabBar(
+              labelStyle: TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
               tabs: <Widget>[
                 Tab(
                   text: titles[0],
@@ -132,13 +136,10 @@ class OverviewScreen extends StatelessWidget {
                 _emergecy('Are you in an emergency?',
                     'Check out some agencies that can help you'),
                 Expanded(
-                    child: Container(
-                  child: _isLoading
-                      ? Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : ArticleTab(),
-                ))
+                  child: Container(
+                    child: ArticleTab(),
+                  ),
+                )
               ],
             ),
           ],

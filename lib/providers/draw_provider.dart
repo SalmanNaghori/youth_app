@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:youth_app/screens/How_it_workScreen.dart';
 import 'package:youth_app/screens/contact_us_screen.dart';
 import 'package:youth_app/screens/overview_screen.dart';
+import 'package:youth_app/screens/term_Of_Use_Screen.dart';
 import 'package:youth_app/screens/urgent_help_screen.dart';
 
-import '../screens/drawers_screen.dart';
+import '../screens/about_YWI_screen.dart';
 import '../screens/urgent_help_screen.dart';
+import '../screens/FAQs_Screen.dart';
 
 class DrawerProvider {
   final String listTitle;
