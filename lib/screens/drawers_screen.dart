@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:youth_app/providers/FAQ_provider.dart';
 import 'package:youth_app/widgets/drawer.dart';
 import '../widgets/floating_item.dart';
+import '../widgets/drawer_item.dart';
 
 //this for About YWI
 
@@ -18,6 +19,7 @@ class AboutYWIScreen extends StatelessWidget {
       floatingActionButton: FloatingAction(),
       drawer: DrawerItem(),
       appBar: AppBar(
+        leading: DrawerIcon(),
         centerTitle: true,
         title: Text('About YWI'),
       ),
@@ -84,6 +86,7 @@ class _FAQsScreenState extends State<FAQsScreen> {
       floatingActionButton: FloatingAction(),
       drawer: DrawerItem(),
       appBar: AppBar(
+        leading: DrawerIcon(),
         centerTitle: true,
         title: Text('FAQs'),
       ),
@@ -149,6 +152,7 @@ class TermOfUseScreen extends StatelessWidget {
       floatingActionButton: FloatingAction(),
       drawer: DrawerItem(),
       appBar: AppBar(
+        leading: DrawerIcon(),
         centerTitle: true,
         title: Text('Terms of use'),
       ),

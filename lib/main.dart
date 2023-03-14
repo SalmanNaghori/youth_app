@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:youth_app/screens/contact_us_screen.dart';
-import 'package:youth_app/screens/drawers_screen.dart';
-import './screens/overview_screen.dart';
+import 'package:youth_app/screens/agancy_detail_screen.dart';
+import 'package:youth_app/screens/overview_screen.dart';
+import 'package:youth_app/screens/urgent_help_screen.dart';
+import './providers/pro_agency.dart';
+import './screens/drawers_screen.dart';
 
-void main() => runApp(MyApp());
+import 'package:provider/provider.dart';
+
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    const int _bluePrimaryValue = 0xFF3F7ccd;
+    const int _bluePrimaryValue = 0xFF3f7ccd;
     const MaterialColor ourblue = MaterialColor(
       _bluePrimaryValue,
       <int, Color>{
@@ -27,22 +31,27 @@ class MyApp extends StatelessWidget {
       },
     );
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: ourblue,
-        fontFamily: 'OpenSans',
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => Agencies(),
+          // child: child,
+        ),
+      ],
+      child: Consumer(
+        builder: (context, _, c) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: ourblue,
+            fontFamily: 'OpenSansSemiBold',
+          ),
+          home: OverviewScreen(),
+          routes: {
+            FAQsScreen.routeName: (ctx) => FAQsScreen(),
+            AgencyDetailScreen.routeName: (ctx) => AgencyDetailScreen(),
+          },
+        ),
       ),
-      home: OverviewScreen(),
-      routes: {
-        OverviewScreen.routeName: (context) => OverviewScreen(),
-        AboutYWIScreen.routeName: (context) => AboutYWIScreen(),
-        FAQsScreen.routeName: (context) => FAQsScreen(),
-        TermOfUseScreen.routeName: (context) => TermOfUseScreen(),
-        ContactUsScreen.routename: (context) => ContactUsScreen(),
-        // '/page2': (context) => Page2(),
-        // '/page3': (context) => Page3(),
-      },
     );
   }
 }

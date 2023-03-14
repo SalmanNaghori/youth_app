@@ -1,32 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:youth_app/screens/How_it_workScreen.dart';
-import 'package:youth_app/screens/contact_us_screen.dart';
-import 'package:youth_app/screens/drawers_screen.dart';
-import 'package:youth_app/screens/overview_screen.dart';
-import 'package:youth_app/screens/urgent_help_screen.dart';
+import '../providers/draw_provider.dart';
 
 class DrawerItem extends StatefulWidget {
   late int currentIndex;
-  static final List<String> _listViewData = [
-    'Home',
-    'Urgent help',
-    'How it works',
-    'About YWI',
-    'Contact us',
-    'FAQs',
-    'Terms of use',
-  ];
-  static final List<Widget> _listViewWidget = [
-    OverviewScreen(),
-    UrgentHelpScreen(),
-    HowItWorkScreen(),
-    AboutYWIScreen(),
-    ContactUsScreen(),
-    FAQsScreen(),
-    TermOfUseScreen(),
-  ];
 
   @override
   State<DrawerItem> createState() => _DrawerItemState();
@@ -69,7 +47,7 @@ class _DrawerItemState extends State<DrawerItem> {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: DrawerItem._listViewData.length,
+                itemCount: DrawerData.length,
                 itemBuilder: (context, index) {
                   return Row(
                     children: [
@@ -89,7 +67,7 @@ class _DrawerItemState extends State<DrawerItem> {
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: ListTile(
                               title: Text(
-                                DrawerItem._listViewData[index],
+                                DrawerData[index].listTitle,
                                 style: TextStyle(
                                     fontFamily: 'OpenSans', fontSize: 18),
                               ),
@@ -100,8 +78,7 @@ class _DrawerItemState extends State<DrawerItem> {
                                     Navigator.push(
                                         context,
                                         PageTransition(
-                                            child: DrawerItem
-                                                ._listViewWidget[index],
+                                            child: DrawerData[index].listWidget,
                                             type: PageTransitionType
                                                 .rightToLeft));
                                   },
